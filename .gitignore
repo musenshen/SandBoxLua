@@ -1,1 +1,5 @@
 frameworks/cocos2d-x/
+frameworks/runtime-src/proj.win32/Debug.win32/
+frameworks/runtime-src/proj.win32/SandBox.opensdf
+frameworks/runtime-src/proj.win32/SandBox.sdf
+frameworks/runtime-src/proj.win32/SandBox.v12.suo
