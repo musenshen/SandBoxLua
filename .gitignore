@@ -1,4 +1,7 @@
-frameworks/cocos2d-x/
+frameworks/cocos2d-x/cocos/2d/Debug.win32
+frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.win32/Debug.win32
+frameworks/cocos2d-x/cocos/editor-support/spine/proj.win32/Debug.win32
+frameworks/cocos2d-x/external/Box2D/proj.win32/Debug.win32
 runtime/win32/
 frameworks/runtime-src/proj.win32/Debug.win32/
 frameworks/runtime-src/proj.win32/SandBox.opensdf
