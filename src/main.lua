@@ -4,6 +4,7 @@ cc.FileUtils:getInstance():addSearchPath("res")
 require("cocos.init")
 require("config")
 require("framework.init")
+require("core.init")
 
 -- cclog
 local cclog = function(...)

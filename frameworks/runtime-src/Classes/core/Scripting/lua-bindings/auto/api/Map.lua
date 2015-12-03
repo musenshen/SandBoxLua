@@ -10,28 +10,14 @@
         
 --------------------------------
 -- 
--- @function [parent=#Map] GetCenters 
--- @param self
--- @return array_table#array_table ret (return value: array_table)
-        
---------------------------------
--- 
 -- @function [parent=#Map] GeneratePolygons 
 -- @param self
         
 --------------------------------
 -- 
--- @function [parent=#Map] WriteFile 
+-- @function [parent=#Map] GetCenters 
 -- @param self
--- @param #string file_name
--- @return bool#bool ret (return value: bool)
-        
---------------------------------
--- 
--- @function [parent=#Map] LoadFile 
--- @param self
--- @param #string file_name
--- @return bool#bool ret (return value: bool)
+-- @return array_table#array_table ret (return value: array_table)
         
 --------------------------------
 -- 

@@ -7,7 +7,7 @@ namespace maps {
 
 static long  GetCocos2dTime()
 {
-	return cocos2d::utils::gettime() * 1000;
+	return cocos2d::utils::gettime();
 }
 
 Map::Map(void) {}

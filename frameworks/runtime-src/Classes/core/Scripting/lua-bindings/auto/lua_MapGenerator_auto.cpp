@@ -1039,53 +1039,6 @@ int lua_MapGenerator_Map_GenerateTest(lua_State* tolua_S)
 
     return 0;
 }
-int lua_MapGenerator_Map_GetCenters(lua_State* tolua_S)
-{
-    int argc = 0;
-    maps::Map* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"maps.Map",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (maps::Map*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_MapGenerator_Map_GetCenters'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_MapGenerator_Map_GetCenters'", nullptr);
-            return 0;
-        }
-        cocos2d::Vector<maps::Center *> ret = cobj->GetCenters();
-        ccvector_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "maps.Map:GetCenters",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_MapGenerator_Map_GetCenters'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_MapGenerator_Map_GeneratePolygons(lua_State* tolua_S)
 {
     int argc = 0;
@@ -1132,7 +1085,7 @@ int lua_MapGenerator_Map_GeneratePolygons(lua_State* tolua_S)
 
     return 0;
 }
-int lua_MapGenerator_Map_WriteFile(lua_State* tolua_S)
+int lua_MapGenerator_Map_GetCenters(lua_State* tolua_S)
 {
     int argc = 0;
     maps::Map* cobj = nullptr;
@@ -1152,82 +1105,29 @@ int lua_MapGenerator_Map_WriteFile(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_MapGenerator_Map_WriteFile'", nullptr);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_MapGenerator_Map_GetCenters'", nullptr);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 0) 
     {
-        std::string arg0;
-
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "maps.Map:WriteFile");
         if(!ok)
         {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_MapGenerator_Map_WriteFile'", nullptr);
+            tolua_error(tolua_S,"invalid arguments in function 'lua_MapGenerator_Map_GetCenters'", nullptr);
             return 0;
         }
-        bool ret = cobj->WriteFile(arg0);
-        tolua_pushboolean(tolua_S,(bool)ret);
+        cocos2d::Vector<maps::Center *> ret = cobj->GetCenters();
+        ccvector_to_luaval(tolua_S, ret);
         return 1;
     }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "maps.Map:WriteFile",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "maps.Map:GetCenters",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_MapGenerator_Map_WriteFile'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_MapGenerator_Map_LoadFile(lua_State* tolua_S)
-{
-    int argc = 0;
-    maps::Map* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"maps.Map",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (maps::Map*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_MapGenerator_Map_LoadFile'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        std::string arg0;
-
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "maps.Map:LoadFile");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_MapGenerator_Map_LoadFile'", nullptr);
-            return 0;
-        }
-        bool ret = cobj->LoadFile(arg0);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "maps.Map:LoadFile",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_MapGenerator_Map_LoadFile'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_MapGenerator_Map_GetCenters'.",&tolua_err);
 #endif
 
     return 0;
@@ -1392,10 +1292,8 @@ int lua_register_MapGenerator_Map(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"Map");
         tolua_function(tolua_S,"new",lua_MapGenerator_Map_constructor);
         tolua_function(tolua_S,"GenerateTest",lua_MapGenerator_Map_GenerateTest);
-        tolua_function(tolua_S,"GetCenters",lua_MapGenerator_Map_GetCenters);
         tolua_function(tolua_S,"GeneratePolygons",lua_MapGenerator_Map_GeneratePolygons);
-        tolua_function(tolua_S,"WriteFile",lua_MapGenerator_Map_WriteFile);
-        tolua_function(tolua_S,"LoadFile",lua_MapGenerator_Map_LoadFile);
+        tolua_function(tolua_S,"GetCenters",lua_MapGenerator_Map_GetCenters);
         tolua_function(tolua_S,"GenerateLand",lua_MapGenerator_Map_GenerateLand);
         tolua_function(tolua_S,"Generate",lua_MapGenerator_Map_Generate);
     tolua_endmodule(tolua_S);

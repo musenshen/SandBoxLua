@@ -40,6 +40,4 @@ int register_all_MapGenerator(lua_State* tolua_S);
 
 
 
-
-
 #endif // __MapGenerator_h__

@@ -22,6 +22,8 @@
 #include "luabinding/cocos2dx_extra_ios_iap_luabinding.h"
 #endif
 
+#include "core/Scripting/lua-bindings/auto/lua_MapGenerator_auto.hpp"
+
 using namespace CocosDenshion;
 
 USING_NS_CC;
@@ -118,6 +120,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // use Quick-Cocos2d-X
     quick_module_register(L);
+
+	register_all_MapGenerator(L);
 
     LuaStack* stack = engine->getLuaStack();
 

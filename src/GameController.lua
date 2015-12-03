@@ -16,7 +16,8 @@ end
 -- 开始
 function GameController:start()
     local CellSceneLaunch = require("CellSceneLaunch")
-    pcall(CellSceneLaunch.start, CellSceneLaunch:getInstance())
+    --pcall(CellSceneLaunch.start, CellSceneLaunch:getInstance())
+    CellSceneLaunch:getInstance():start()
 
     local scheduler = cc.Director:getInstance():getScheduler()
     self._schedulerBackEntry = scheduler:scheduleScriptFunc(GameController.onSceneLaunchSuccess, 1.5, false)

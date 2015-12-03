@@ -34,13 +34,31 @@ end
 
 function CellSceneLaunch:initScene()
     -- add in farm background
-    local bg = cc.Sprite:create("Graphics/Tile/TileA1.png")
-    if bg then
-        local VisibleRect = require("VisibleRect") 
-        bg:setPosition(VisibleRect:center())
-    end
+    --local bg = cc.Sprite:create("Graphics/Tile/TileA1.png")
+    --if bg then
+    --    local VisibleRect = require("VisibleRect") 
+    --    bg:setPosition(VisibleRect:center())
+    --end
     
-    return bg
+    -- Create the dragpanel
+    local visibleSize = cc.Director:getInstance():getVisibleSize()
+        
+    local scrollView = ccui.ScrollView:create()
+    scrollView:setDirection(ccui.ScrollViewDir.both)
+    scrollView:setTouchEnabled(true)
+    scrollView:setBounceEnabled(true)
+    scrollView:setContentSize(visibleSize)
+
+    local mapNode = maps.MapRender.createMapNode("Graphics/Tile/TileA2.png")
+
+    --local mapNode = cc.Sprite:create("Graphics/Tile/font.png")
+    --mapNode:setAnchorPoint(0,0)
+    scrollView:addChild(mapNode)
+    scrollView:setPosition(0,0)
+    scrollView:setInnerContainerSize(mapNode:getContentSize())
+    scrollView:scrollToPercentBothDirection(cc.p(50, 50), 2, true)
+    
+    return scrollView
 end
 
 function CellSceneLaunch:onRunThisSceneDone()
