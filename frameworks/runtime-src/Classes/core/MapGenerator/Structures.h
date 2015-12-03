@@ -4,6 +4,7 @@
 #include <vector>
 #include <list>
 #include <string>
+#include "cocos2d.h"
 
 using namespace std;
 
@@ -38,11 +39,16 @@ enum class Biome{
 
 
 // Center of Voronoi cell; Corner of Delaunay triangle
-class Center
+class Center : public cocos2d::Ref
 {
 public:
+	static Center* create(unsigned int i, unsigned int r, unsigned int c, cocos2d::Vec2 position);
+
+public:
+	bool init(unsigned int i, unsigned int r, unsigned int c, cocos2d::Vec2 position);
+
+public:
 	Center();
-	Center(unsigned int i, unsigned int r, unsigned int c, double x, double y);
 	virtual ~Center();
 
 public:
@@ -61,11 +67,7 @@ public:
 	/**
 	* 获取X轴位置
 	*/
-	double getPositionX();
-	/**
-	* 获取Y轴位置
-	*/
-	double getPositionY();
+	cocos2d::Vec2 getPosition();
 	/**
 	* 设置是否海滩
 	*/
@@ -117,14 +119,13 @@ public:
 	/**
 	* 获取Center容器
 	*/
-	//vector<Center*> getCenters();
+	cocos2d::Vector<Center*> getCenters();
 
 private:
 	unsigned int		_index;
 	unsigned int		_row;
 	unsigned int		_col;
-	double				_posx;
-	double				_posy;
+	cocos2d::Vec2       _position;
 
 	bool _border;
 	Terrain _terrain;
@@ -135,7 +136,7 @@ private:
 
 	double _elevation;
 
-	vector<Center *>	_centers;
+	cocos2d::Vector<Center *>	_centers;
     
 };
 

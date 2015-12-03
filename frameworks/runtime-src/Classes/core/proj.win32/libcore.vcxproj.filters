@@ -21,6 +21,9 @@
     <ClCompile Include="..\MapGenerator\Structures.cpp">
       <Filter>MapGenerator</Filter>
     </ClCompile>
+    <ClCompile Include="..\Scripting\lua-bindings\auto\lua_MapGenerator_auto.cpp">
+      <Filter>lua-bindings\auto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\MapGenerator\Map.h">
@@ -28,6 +31,9 @@
     </ClInclude>
     <ClInclude Include="..\MapGenerator\Structures.h">
       <Filter>MapGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Scripting\lua-bindings\auto\lua_MapGenerator_auto.hpp">
+      <Filter>lua-bindings\auto</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

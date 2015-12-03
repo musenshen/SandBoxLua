@@ -39,9 +39,9 @@ void Map::GenerateTest()
 	{
 		for (size_t i = 0; i < lenX; i++)
 		{
-			Center* c = new Center(index++, i, j, i * TILE_SIZE, j*TILE_SIZE);
+			Center* c = Center::create(index++, i, j, cocos2d::Vec2(i * TILE_SIZE, j*TILE_SIZE));
 			c->setTerrain((Terrain)(rand() % (int)Terrain::Size));
-			centers.push_back(c);
+			centers.pushBack(c);
 		}
 	}
 }
@@ -253,7 +253,7 @@ bool Map::IsIsland(double x, double y){
 }
 
 
-Center * Map::GetCenter(double x, double y){
+Center* Map::GetCenter(double x, double y){
 	map<double, map<double, Center *> >::const_iterator it = pos_cen_map.find(x);
 	if(it != pos_cen_map.end()){
 		map<double, Center *>::const_iterator it2 = it->second.find(y);
@@ -273,9 +273,9 @@ void Map::LloydRelaxation(){
 	
 }
 
-// vector<Center *> Map::GetCenters(){
-// 	return centers;
-// }
+cocos2d::Vector<Center*> Map::GetCenters(){
+ 	return centers;
+}
 
 unsigned int Map::HashString(string seed){
 	unsigned int hash = 0;

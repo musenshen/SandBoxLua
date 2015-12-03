@@ -30,7 +30,7 @@ public:
 	bool LoadFile(string file_name);
 	bool WriteFile(string file_name);
 
-	//vector<Center *> GetCenters();
+	cocos2d::Vector<Center*> GetCenters();
 
 private:
 	int map_width;
@@ -39,7 +39,7 @@ private:
 	double z_coord;
 	string m_seed;
 
-	vector<Center *>    centers;
+	cocos2d::Vector<Center*>    centers;
 
 	map<double, map<double, Center *> > pos_cen_map;
 
@@ -60,7 +60,7 @@ private:
 
 	void GeneratePoints();
 	void FinishInfo();
-	Center * GetCenter(double x, double y);
+	Center* GetCenter(double x, double y);
 
 	void LloydRelaxation();
 	static unsigned int HashString(string seed);

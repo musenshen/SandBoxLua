@@ -4,13 +4,33 @@
 
 namespace maps {
 
-Center::Center()
-:_index(0), _row(0), _col(0), _posx(0), _posy(0), _border(false), _terrain(Terrain::None), _biome(Biome::None), _elevation(0.0)
+Center* Center::create(unsigned int i, unsigned int r, unsigned int c, cocos2d::Vec2 position)
 {
+	Center *center = new (std::nothrow) Center();
+	if (center && center->init(i, r, c, position))
+	{
+		center->autorelease();
+		return center;
+	}
+	CC_SAFE_DELETE(center);
+	return nullptr;
 }
 
-Center::Center(unsigned int i, unsigned int r, unsigned int c, double x, double y)
-: _index(i), _row(r), _col(c), _posx(x), _posy(y), _border(false), _terrain(Terrain::None), _biome(Biome::None), _elevation(0.0)
+bool Center::init(unsigned int i, unsigned int r, unsigned int c, cocos2d::Vec2 position)
+{
+	_index = i;
+	_row = r;
+	_col = c;
+	_position = position;
+	_border = false;
+	_terrain = Terrain::None;
+	_biome = Biome::None;
+	_elevation = 0.f;
+
+	return true;
+}
+Center::Center()
+:_index(0), _row(0), _col(0), _position(cocos2d::Vec2(0,0)), _border(false), _terrain(Terrain::None), _biome(Biome::None), _elevation(0.0)
 {
 }
 
@@ -34,14 +54,9 @@ unsigned int Center::getCol()
 	return _col;
 }
 
-double Center::getPositionX()
+cocos2d::Vec2 Center::getPosition()
 {
-	return _posx;
-}
-
-double Center::getPositionY()
-{
-	return _posy;
+	return _position;
 }
 
 void Center::setBorder(bool border)
@@ -104,9 +119,9 @@ double Center::getElevation()
 	return _elevation;
 }
 
-// vector<Center*> Center::getCenters()
-// {
-// 	return _centers;
-// }
+cocos2d::Vector<Center*> Center::getCenters()
+{
+ 	return _centers;
+}
 
 }
