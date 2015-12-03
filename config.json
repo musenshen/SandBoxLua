@@ -3,7 +3,7 @@
         "isXXTEA":false,
         "isLandscape":true,
         "isWindowTop":false,
-        "name":"",
+        "name":"SandBox",
         "width":1024,
         "height":768,
         "entry":"src/main.lua",

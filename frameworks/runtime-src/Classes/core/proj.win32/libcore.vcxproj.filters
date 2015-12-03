@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="MapGenerator">
+      <UniqueIdentifier>{536e825f-af19-46aa-bed0-fbb0aadaa50c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua-bindings">
+      <UniqueIdentifier>{28ae7241-7145-4bf9-89ca-275beb145387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua-bindings\auto">
+      <UniqueIdentifier>{fa06da9e-3233-4c5b-af3a-7e361042c35a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua-bindings\manual">
+      <UniqueIdentifier>{5217c44d-bbe2-4b84-b97a-dc9d997edf82}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\MapGenerator\Map.cpp">
+      <Filter>MapGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MapGenerator\Structures.cpp">
+      <Filter>MapGenerator</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\MapGenerator\Map.h">
+      <Filter>MapGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MapGenerator\Structures.h">
+      <Filter>MapGenerator</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
