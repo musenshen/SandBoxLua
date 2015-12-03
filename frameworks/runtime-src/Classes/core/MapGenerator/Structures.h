@@ -1,7 +1,9 @@
-#pragma once
+#ifndef _MAPS_STRUCTURES_H_
+#define _MAPS_STRUCTURES_H_
 
 #include <vector>
 #include <list>
+#include <string>
 
 using namespace std;
 
@@ -138,3 +140,5 @@ private:
 };
 
 }
+
+#endif

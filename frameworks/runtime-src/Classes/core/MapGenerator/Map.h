@@ -1,6 +1,9 @@
-#pragma once
+#ifndef _MAPS_MAP_H_
+#define _MAPS_MAP_H_
+
 
 #include "Structures.h"
+#include <string>
 #include <vector>
 #include <map>
 
@@ -65,3 +68,5 @@ private:
 };
 
 }
+
+#endif
